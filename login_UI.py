@@ -1,42 +1,52 @@
 from tkinter import *
+from tkinter import messagebox
 import datetime
 
 
-# ------------------------------------ SCREEN TIME FUNCTION ------------------------------------ #
 def update_time():
-	now = datetime.datetime.now()
-	current_date = now.strftime('%A, %B %d')
-	current_time = now.strftime('%I:%M %p')
-	# make canvas2 a global variable in this function
-	canvas2.itemconfig(time_text, text=current_time)
-	canvas2.itemconfig(date_text, text=current_date)
-	# Update the time after every 1000 milliseconds (1 second)
-	window.after(1000, update_time)
+    # This function updates the screen time function
+    now = datetime.datetime.now()
+    current_date = now.strftime('%A, %B %d')
+    current_time = now.strftime('%I:%M %p')
+    canvas2.itemconfig(time_text, text=current_time)
+    canvas2.itemconfig(date_text, text=current_date)
 
 
-# ------------------------------------ SCREEN TIME FUNCTION ------------------------------------ #
-
-# ------------------------------------ SHOW PASSWORD ENTRY ------------------------------------- #
 def show_password_entry(event):
-	canvas2.create_window(450, 260, window=password_entry)
+    # This function shows password entry
+    canvas2.create_window(450, 260, window=password_entry)
+    canvas2.create_window(403, 285, window=check_button_frame)
+    check_button.pack()
+    canvas2.create_window(507, 310, window=login_button)
 
 
-# ------------------------------------ SHOW PASSWORD ENTRY ------------------------------------- #
-
-# ------------------------------------ CLEAR USERNAME      ------------------------------------- #
 def clear_username(event):
-	if username_entry.get() == "Username":
-		username_entry.delete(0, END)
-		username_entry.config(fg="black")  # Set text color to black when typing starts
+    # clear username
+    if username_entry.get() == "Username":
+        username_entry.delete(0, END)
+        username_entry.config(fg="black")  # Set text color to black when typing starts
 
-# ------------------------------------ CLEAR USERNAME  ------------------------------------- #
 
-# ------------------------------------ CLEAR INITIAL PASSWORD ENTRY ------------------------------------- #
 def clear_password(event):
-	password_entry.delete(0, END)
-	password_entry.config(show="*", fg="black")  # Set text color to black when typing starts
+    # clear initial password entry
+    password_entry.delete(0, END)
+    password_entry.config(show="*", fg="black")  # Set text color to black when typing starts
 
-# ------------------------------------ CLEAR INITIAL PASSWORD ENTRY ------------------------------------- #
+
+def toggle_showing_password():
+    if check_var.get() == 1:
+        password_entry.config(show='')
+    else:
+        password_entry.config(show='*')
+
+
+def messageOnClickLogin():
+    # message box (either welcome info or log in error)
+    now = datetime.datetime.now()
+    current_time = now.strftime('%I:%M %p')
+    messagebox.showinfo(title="Login successful!!", message=f"Login time:{current_time}\nWelcome to Work!!!!")
+    messagebox.showerror(title="login not successful", message="User not found in system")
+
 
 window = Tk()
 window.title("TrackPloyee")
@@ -66,13 +76,26 @@ canvas2.create_window(450, 230, window=username_entry)
 # Bind the Enter key press event to the show_password_entry only after entering username and pressing "ENTER"
 username_entry.bind("<FocusIn>", clear_username)
 username_entry.bind("<Return>", show_password_entry)
+# username_entry.bind("<Return>", show_tick_box)
 
 # Password Entry
 password_entry = Entry(width=32, fg='grey')
 password_entry.insert(0, "Password")
 password_entry.bind("<FocusIn>", clear_password)
 
-# Function to keep updating the time and date in canvas2
+# Tick box
+check_button_frame = Frame(canvas2, bg="#9DB2BF")
+check_var = IntVar()
+check_button = Checkbutton(check_button_frame,
+                           text='Show password',
+                           variable=check_var,
+                           bg="#9DB2BF",
+                           command=toggle_showing_password)
+
+# Login button
+login_button = Button(width=10, text='Login', command=messageOnClickLogin)
+
+# keep updating the time and date in canvas2
 update_time()
 
 window.mainloop()
