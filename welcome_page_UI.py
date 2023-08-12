@@ -1,6 +1,11 @@
 from tkinter import *
 
 
+def open_password_login():
+	window.destroy()
+	from login_UI import launch_login_UI
+
+
 window = Tk()
 window.title("TrackPloyee")
 window.geometry("900x600")
@@ -21,8 +26,8 @@ facial_recognition_img = PhotoImage(file="samples/welcome-page-logos/icons8-faci
 manager_img = PhotoImage(file="samples/welcome-page-logos/icons8-manager-100.png")
 new_employee_img = PhotoImage(file="samples/welcome-page-logos/icons8-add-user-male-female-100.png")
 
-password_login_button = Button(width=100, height=100, text='Password Login', image=password_img)#,
-							   #command=launch_login_page)
+password_login_button = Button(width=100, height=100, text='Password Login', image=password_img,
+							   command=open_password_login)
 canvas2.create_window(300, 150, window=password_login_button)
 
 fingerprint_login_button = Button(width=100, height=100, text='Fingerprint Login', image=fingerprint_img)
@@ -38,8 +43,5 @@ canvas2.create_window(550, 300, window=new_employee_registration_button)
 
 manager_login_button = Button(width=100, height=100, text='Manager Login', image=manager_img)
 canvas2.create_window(380, 300, window=manager_login_button)
-
-
-
 
 window.mainloop()

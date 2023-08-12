@@ -40,7 +40,7 @@ def launch_login_UI():
 		# message box (either welcome info or log in error)
 		now = datetime.datetime.now()
 		current_time = now.strftime('%I:%M %p')
-		messagebox.showinfo(title="Login successful!!", message=f"Login time:{current_time}\nWelcome to Work!!!!")
+		messagebox.showinfo(title="Login successful!!", message=f"Login time: {current_time}\nWelcome to Work!!!!")
 		messagebox.showerror(title="login not successful", message="User not found in system")
 
 	window = Tk()
