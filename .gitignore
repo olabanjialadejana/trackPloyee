@@ -3,6 +3,6 @@ test.ipynb
 reference_image.jpg
 facial_recognition.py
 image_capture.py
-__pycache__
+__pycache__/
 Pipfile
 Pipfile.lock
