@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 customtkinter = "*"
+matplotlib = "*"
+jupyter = "*"
 
 [dev-packages]
 

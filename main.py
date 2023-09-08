@@ -1,4 +1,6 @@
-from login_UI import launch_login_UI
+from welcome_page_UI import WelcomePageUI
+
+welcome = WelcomePageUI()
 
 
 
