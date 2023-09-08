@@ -3,3 +3,4 @@ image_capture.py
 test.ipynb
 Pipfile.lock
 Pipfile
+.gitignore
