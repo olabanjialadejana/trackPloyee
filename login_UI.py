@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import datetime
 
+
 class LoginUI:
     def __init__(self):
         self.window = Tk()
@@ -12,6 +13,11 @@ class LoginUI:
         self.logo_img = PhotoImage(file="logo.png")
         self.canvas.create_image(450, 100, image=self.logo_img)
         self.canvas.grid(column=0, row=0)
+        self.go_back_img = PhotoImage(file="samples/welcome-page-logos/icons8-go-back-48.png")
+        self.go_back_button = Button(width=48, height=48, text='go_back',
+        							 image=self.go_back_img, command=self.go_back_to_welcome_page)
+        # Position the button at the upper left part of the canvas
+        self.canvas.create_window(10, 10, anchor="nw", window=self.go_back_button)
         self.canvas2 = Canvas(width=900, height=450, background="#526D82")
         self.canvas2.create_rectangle(210, 400, 690, 50, fill="#9DB2BF")
         self.initial_time = datetime.datetime.now().strftime('%I:%M %p')
@@ -72,3 +78,7 @@ class LoginUI:
         messagebox.showinfo(title="Login successful!!", message=f"Login time: {current_time}\nWelcome to Work!!!!")
         messagebox.showerror(title="login not successful", message="User not found in system")
 
+    def go_back_to_welcome_page(self):
+        self.window.destroy()
+        from welcome_page_UI import WelcomePageUI
+        WelcomePageUI()
