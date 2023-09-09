@@ -34,7 +34,7 @@ class WelcomePageUI:
 		self.canvas2.create_window(600, 150, window=self.facial_recognition_login_button)
 		self.canvas2.create_image(600, 221, image=self.coming_soon_img)
 		self.new_employee_registration_button = Button(width=100, height=100, text='New Employee Registration',
-													   image=self.new_employee_img)
+													   image=self.new_employee_img, command=self.open_staff_registration)
 		self.canvas2.create_window(550, 320, window=self.new_employee_registration_button)
 		self.manager_login_button = Button(width=100, height=100, text='Manager Login', image=self.manager_img)
 		self.canvas2.create_window(380, 320, window=self.manager_login_button)
@@ -45,6 +45,11 @@ class WelcomePageUI:
 		self.window.destroy()
 		from login_UI import LoginUI
 		LoginUI()
+
+	def open_staff_registration(self):
+		self.window.destroy()
+		from staff_registration import StaffRegistrationUI
+		StaffRegistrationUI()
 
 
 
