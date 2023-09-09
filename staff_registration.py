@@ -48,11 +48,11 @@ class StaffRegistrationUI:
 		self.canvas2.create_window(374, 120, window=self.age_spinbox)
 
 		# Telephone
-		self.next_kin_telephone = Label(text="Telephone:", font=(FONT_NAME, 10), background="#9DB2BF")
-		self.canvas2.create_window(315, 145, window=self.next_kin_telephone)
-		self.next_kin_telephone_entry = Entry(width=32, fg='grey')
-		self.next_kin_telephone_entry.focus()
-		self.canvas2.create_window(450, 145, window=self.next_kin_telephone_entry)
+		self.telephone = Label(text="Telephone:", font=(FONT_NAME, 10), background="#9DB2BF")
+		self.canvas2.create_window(315, 145, window=self.telephone)
+		self.telephone_entry = Entry(width=32, fg='grey')
+		self.telephone_entry.focus()
+		self.canvas2.create_window(450, 145, window=self.telephone_entry)
 
 		# Email
 		self.email = Label(text="Email:", font=(FONT_NAME, 10), background="#9DB2BF")
@@ -62,27 +62,27 @@ class StaffRegistrationUI:
 		self.canvas2.create_window(450, 170, window=self.email_entry)
 
 		# Address
-		self.position = Label(text="Address:", font=(FONT_NAME, 10), background="#9DB2BF")
-		self.canvas2.create_window(322, 195, window=self.position)
-		self.position = Entry(width=32, fg='grey')
-		self.position.focus()
-		self.canvas2.create_window(450, 195, window=self.position)
+		self.address = Label(text="Address:", font=(FONT_NAME, 10), background="#9DB2BF")
+		self.canvas2.create_window(322, 195, window=self.address)
+		self.address_entry = Entry(width=32, fg='grey')
+		self.address_entry.focus()
+		self.canvas2.create_window(450, 195, window=self.address_entry)
 
 		# Next of kin section
 		self.next_kin = Label(text="Next of kin details", font=(FONT_NAME, 12), background="#9DB2BF")
 		self.canvas2.create_window(450, 220, window=self.next_kin)
 
-		self.department = Label(text="First Name:", font=(FONT_NAME, 10), background="#9DB2BF")
-		self.canvas2.create_window(315, 245, window=self.department)
-		self.department = Entry(width=32, fg='grey')
-		self.department.focus()
-		self.canvas2.create_window(450, 245, window=self.department)
+		self.next_kin_name = Label(text="Name:", font=(FONT_NAME, 10), background="#9DB2BF")
+		self.canvas2.create_window(315, 245, window=self.next_kin_name)
+		self.next_kin_name_entry = Entry(width=32, fg='grey')
+		self.next_kin_name_entry.focus()
+		self.canvas2.create_window(450, 245, window=self.next_kin_name_entry)
 
-		self.position = Label(text="Address:", font=(FONT_NAME, 10), background="#9DB2BF")
-		self.canvas2.create_window(322, 270, window=self.position)
-		self.position = Entry(width=32, fg='grey')
-		self.position.focus()
-		self.canvas2.create_window(450, 270, window=self.position)
+		self.next_kin_name_address = Label(text="Address:", font=(FONT_NAME, 10), background="#9DB2BF")
+		self.canvas2.create_window(322, 270, window=self.next_kin_name_address)
+		self.next_kin_name_address_entry = Entry(width=32, fg='grey')
+		self.next_kin_name_address_entry.focus()
+		self.canvas2.create_window(450, 270, window=self.next_kin_name_address_entry)
 
 		self.next_kin_telephone = Label(text="Telephone:", font=(FONT_NAME, 10), background="#9DB2BF")
 		self.canvas2.create_window(315, 295, window=self.next_kin_telephone)
@@ -111,6 +111,12 @@ class StaffRegistrationUI:
 		self.pay_entry = Entry(width=32, fg='grey')
 		self.pay_entry.focus()
 		self.canvas2.create_window(450, 395, window=self.pay_entry)
+
+		self.submit_img = PhotoImage(file="samples/welcome-page-logos/icons8-upload-64.png")
+		self.go_back_button = Button(width=70, height=68, text='submit',
+									 image=self.submit_img)
+		# Position the button at the upper left part of the canvas
+		self.canvas2.create_window(670, 405, anchor="se", window=self.go_back_button)
 
 		self.window.mainloop()
 
