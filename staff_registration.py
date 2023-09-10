@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 FONT_NAME = "Cambria"
 
@@ -113,14 +114,44 @@ class StaffRegistrationUI:
 		self.canvas2.create_window(450, 395, window=self.pay_entry)
 
 		self.submit_img = PhotoImage(file="samples/welcome-page-logos/icons8-upload-64.png")
-		self.go_back_button = Button(width=70, height=68, text='submit',
-									 image=self.submit_img)
+		self.submit_button = Button(width=70, height=68, text='submit',
+									image=self.submit_img,
+									command=lambda: self.messageOnClickLogin())
 		# Position the button at the upper left part of the canvas
-		self.canvas2.create_window(670, 405, anchor="se", window=self.go_back_button)
+		self.canvas2.create_window(670, 405, anchor="se", window=self.submit_button)
 
 		self.window.mainloop()
+
+	def get_all_entry_values(self):
+		first_name = self.first_name_entry.get()
+		last_name = self.last_name_entry.get()
+		age = self.age_spinbox.get()
+		telephone = self.telephone_entry.get()
+		email = self.email_entry.get()
+		address = self.address_entry.get()
+		next_kin_name = self.next_kin_name_entry.get()
+		next_kin_address = self.next_kin_name_address_entry.get()
+		next_kin_telephone = self.next_kin_telephone_entry.get()
+		department = self.department_entry.get()
+		position = self.position_entry.get()
+		pay = self.pay_entry.get()
+		registration_data = [first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
+							 next_kin_telephone, department, position, pay]
+		return registration_data
 
 	def go_back_to_welcome_page(self):
 		self.window.destroy()
 		from welcome_page_UI import WelcomePageUI
 		WelcomePageUI()
+
+	def check_for_empty_entry(self, entry):
+		if '' in entry:
+			return True
+		else:
+			return False
+
+	def messageOnClickLogin(self):
+		if not self.check_for_empty_entry(self.get_all_entry_values()):
+			messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
+		else:
+			messagebox.showerror(title="Error!!!", message="Error, complete all fields!!!")

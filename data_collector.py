@@ -1,4 +1,5 @@
 from staff_registration import StaffRegistrationUI
+
 def get_entrees(
 		first_name,
 		last_name,
