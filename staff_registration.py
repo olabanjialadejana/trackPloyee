@@ -117,8 +117,11 @@ class StaffRegistrationUI:
 		self.submit_button = Button(width=70, height=68, text='submit',
 									image=self.submit_img,
 									command=lambda: self.messageOnClickLogin())
+		self.staff_data = self.get_all_entry_values()
 		# Position the button at the upper left part of the canvas
 		self.canvas2.create_window(670, 405, anchor="se", window=self.submit_button)
+
+		self.registration_data = []
 
 		self.window.mainloop()
 
@@ -135,9 +138,9 @@ class StaffRegistrationUI:
 		department = self.department_entry.get()
 		position = self.position_entry.get()
 		pay = self.pay_entry.get()
-		registration_data = [first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
+		self.registration_data = [first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
 							 next_kin_telephone, department, position, pay]
-		return registration_data
+		return self.registration_data
 
 	def go_back_to_welcome_page(self):
 		self.window.destroy()
@@ -153,5 +156,8 @@ class StaffRegistrationUI:
 	def messageOnClickLogin(self):
 		if not self.check_for_empty_entry(self.get_all_entry_values()):
 			messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
+			self.window.destroy()
+			from welcome_page_UI import WelcomePageUI
+			WelcomePageUI()
 		else:
 			messagebox.showerror(title="Error!!!", message="Error, complete all fields!!!")
