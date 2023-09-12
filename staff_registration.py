@@ -1,5 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
+from datetime import datetime
+import json
+import os
+print("Current directory:", os.getcwd())
 
 FONT_NAME = "Cambria"
 
@@ -116,12 +120,10 @@ class StaffRegistrationUI:
 		self.submit_img = PhotoImage(file="samples/welcome-page-logos/icons8-upload-64.png")
 		self.submit_button = Button(width=70, height=68, text='submit',
 									image=self.submit_img,
-									command=lambda: self.messageOnClickLogin())
-		self.staff_data = self.get_all_entry_values()
+									command=lambda: self.save_registration_data())
+		# self.staff_data = self.get_all_entry_values()
 		# Position the button at the upper left part of the canvas
 		self.canvas2.create_window(670, 405, anchor="se", window=self.submit_button)
-
-		self.registration_data = []
 
 		self.window.mainloop()
 
@@ -138,26 +140,62 @@ class StaffRegistrationUI:
 		department = self.department_entry.get()
 		position = self.position_entry.get()
 		pay = self.pay_entry.get()
-		self.registration_data = [first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
-							 next_kin_telephone, department, position, pay]
-		return self.registration_data
+
+		if '' not in (first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
+					  next_kin_telephone, department, position, pay):
+			# automatically generate unique staff number
+			year = datetime.now().strftime('%Y')
+			staff_number = year + "00" + str(1)
+			registration_data = {
+				staff_number: {
+					'first name': first_name,
+					'last name': last_name,
+					'age': age,
+					'telephone': telephone,
+					'email': email,
+					'address': address,
+					'next of kin': next_kin_name,
+					'next of kin address': next_kin_address,
+					'next of kin telephone': next_kin_telephone,
+					'department/unit': department,
+					'position': position,
+					'pay': pay
+				},
+				# Add more data here if needed
+			}
+			return registration_data
+		else:
+			return None
+
+	def save_registration_data(self):
+		new_data = self.get_all_entry_values()
+		try:
+			with open("data.json", "r+") as data_file:
+				# Read old data
+				data = json.load(data_file)
+		except (FileNotFoundError, json.JSONDecodeError):
+			data = []
+
+		# create a new but sequenced staff number
+		# get last key
+		last_key = list(new_data.keys())[-1]
+		# extract the last character in the key
+		last_character = int(last_key[-1])
+		year = datetime.now().strftime('%Y')
+		staff_number = year + "00" + str(last_character + 1)
+		new_data[staff_number] = new_data.pop(last_key)
+
+		data.append(new_data)
+
+		with open('data.json', 'w') as data_file:
+			json.dump(data, data_file, indent=4)
+
+		messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
+		self.window.destroy()
+		from welcome_page_UI import WelcomePageUI
+		WelcomePageUI()
 
 	def go_back_to_welcome_page(self):
 		self.window.destroy()
 		from welcome_page_UI import WelcomePageUI
 		WelcomePageUI()
-
-	def check_for_empty_entry(self, entry):
-		if '' in entry:
-			return True
-		else:
-			return False
-
-	def messageOnClickLogin(self):
-		if not self.check_for_empty_entry(self.get_all_entry_values()):
-			messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
-			self.window.destroy()
-			from welcome_page_UI import WelcomePageUI
-			WelcomePageUI()
-		else:
-			messagebox.showerror(title="Error!!!", message="Error, complete all fields!!!")
