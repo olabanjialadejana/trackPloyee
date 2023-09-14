@@ -48,7 +48,7 @@ class WelcomePageUI:
 
 	def open_staff_registration(self):
 		self.window.destroy()
-		from staff_registration import StaffRegistrationUI
+		from staff_registration_UI import StaffRegistrationUI
 		StaffRegistrationUI()
 
 
