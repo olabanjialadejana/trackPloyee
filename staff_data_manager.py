@@ -4,6 +4,10 @@ from tkinter import messagebox
 from welcome_page_UI import WelcomePageUI
 
 
+class RegistrationError(Exception):
+	pass
+
+
 def get_all_entry_values(self):
 	first_name = self.first_name_entry.get()
 	last_name = self.last_name_entry.get()
@@ -11,6 +15,8 @@ def get_all_entry_values(self):
 	telephone = self.telephone_entry.get()
 	email = self.email_entry.get()
 	address = self.address_entry.get()
+	password = self.password_entry.get()
+	password_confirmation = self.password_confirmation_entry.get()
 	next_kin_name = self.next_kin_name_entry.get()
 	next_kin_address = self.next_kin_name_address_entry.get()
 	next_kin_telephone = self.next_kin_telephone_entry.get()
@@ -18,8 +24,15 @@ def get_all_entry_values(self):
 	position = self.position_entry.get()
 	pay = self.pay_entry.get()
 
-	if '' not in (first_name, last_name, age, telephone, email, address, next_kin_name, next_kin_address,
+	try:
+		if '' in (first_name, last_name, age, telephone, email, address, password, password_confirmation, next_kin_name,
+				  next_kin_address,
 				  next_kin_telephone, department, position, pay):
+			raise RegistrationError("Empty fields are not allowed")
+
+		if password != password_confirmation:
+			raise RegistrationError("Password and password confirmation do not match.")
+
 		# automatically generate unique staff number
 		year = datetime.now().strftime('%Y')
 		staff_number = year + "00" + str(1)
@@ -31,6 +44,7 @@ def get_all_entry_values(self):
 				'telephone': telephone,
 				'email': email,
 				'address': address,
+				'password': password,
 				'next of kin': next_kin_name,
 				'next of kin address': next_kin_address,
 				'next of kin telephone': next_kin_telephone,
@@ -41,7 +55,8 @@ def get_all_entry_values(self):
 			# Add more data here if needed
 		}
 		return registration_data
-	else:
+	except RegistrationError as e:
+		messagebox.showerror(title="Registration Error", message=str(e))
 		return None
 
 
