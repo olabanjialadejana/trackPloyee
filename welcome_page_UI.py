@@ -1,4 +1,6 @@
 from tkinter import *
+import datetime
+from login_UI_options import LoginUIOptions
 
 
 class WelcomePageUI:
@@ -14,32 +16,31 @@ class WelcomePageUI:
 		self.canvas2 = Canvas(width=900, height=450, background="#526D82")
 		self.canvas2.create_rectangle(210, 400, 690, 50, fill="#9DB2BF")
 		self.canvas2.grid(column=0, row=1)
-		self.password_img = PhotoImage(file="samples/welcome-page-logos/icons8-password-window-100.png")
-		self.fingerprint_img = PhotoImage(file="samples/welcome-page-logos/icons8-fingerprint-scan-64.png")
-		self.facial_recognition_img = PhotoImage(file="samples/welcome-page-logos/icons8-facial-recognition-100.png")
+
+		self.initial_time = datetime.datetime.now().strftime('%I:%M %p')
+		self.initial_date = datetime.datetime.now().strftime('%A, %B %d')
+		self.date_text = self.canvas2.create_text(450, 170, text=self.initial_date, font=("Arial", 10))
+		self.time_text = self.canvas2.create_text(450, 130, text=self.initial_time, font=("Arial", 24))
+		self.canvas2.grid(column=0, row=1)
 		self.manager_img = PhotoImage(file="samples/welcome-page-logos/icons8-manager-100.png")
-		self.new_employee_img = PhotoImage(file="samples/welcome-page-logos/icons8-add-user-male-female-100.png")
-		self.coming_soon_img = PhotoImage(file="samples/welcome-page-logos/icons8-coming-soon-100.png")
+		self.all_staff_img = PhotoImage(file="./samples/welcome-page-logos/all_staff_login.png")
 
-		self.password_login_button = Button(width=100, height=100, text='Password Login', image=self.password_img,
-											command=self.open_password_login)
-		self.canvas2.create_window(300, 150, window=self.password_login_button)
-		self.fingerprint_login_button = Button(width=100, height=100, text='Fingerprint Login',
-											   image=self.fingerprint_img)
-		self.canvas2.create_window(450, 150, window=self.fingerprint_login_button)
-		self.canvas2.create_image(450, 221, image=self.coming_soon_img)
-		self.facial_recognition_login_button = Button(width=100, height=100, text='Facial Recognition Login',
-													  image=self.facial_recognition_img)
-
-		self.canvas2.create_window(600, 150, window=self.facial_recognition_login_button)
-		self.canvas2.create_image(600, 221, image=self.coming_soon_img)
-		self.new_employee_registration_button = Button(width=100, height=100, text='New Employee Registration',
-													   image=self.new_employee_img, command=self.open_staff_registration)
-		self.canvas2.create_window(550, 320, window=self.new_employee_registration_button)
+		self.all_staff_login_button = Button(width=100, height=100, text='New Employee Registration',
+											 image=self.all_staff_img, command=self.go_to_login_ui_options)
+		self.canvas2.create_window(380, 250, window=self.all_staff_login_button)
 		self.manager_login_button = Button(width=100, height=100, text='Manager Login', image=self.manager_img)
-		self.canvas2.create_window(380, 320, window=self.manager_login_button)
+		self.canvas2.create_window(550, 250, window=self.manager_login_button)
+		self.staff_login_text = self.canvas2.create_text(380, 320, text="Staff Login", font=("Arial", 10, "bold"))
+		self.manager_login_text = self.canvas2.create_text(550, 320, text="Manager Login", font=("Arial", 10, "bold"))
 
 		self.window.mainloop()
+
+	def update_time(self):
+		now = datetime.datetime.now()
+		current_date = now.strftime('%A, %B %d')
+		current_time = now.strftime('%I:%M %p')
+		self.canvas2.itemconfig(self.time_text, text=current_time)
+		self.canvas2.itemconfig(self.date_text, text=current_date)
 
 	def open_password_login(self):
 		self.window.destroy()
@@ -51,5 +52,7 @@ class WelcomePageUI:
 		from staff_registration_UI import StaffRegistrationUI
 		StaffRegistrationUI()
 
-
-
+	def go_to_login_ui_options(self):
+		self.window.destroy()
+		from login_UI_options import LoginUIOptions
+		LoginUIOptions()

@@ -80,5 +80,5 @@ class LoginUI:
 
     def go_back_to_welcome_page(self):
         self.window.destroy()
-        from welcome_page_UI import WelcomePageUI
-        WelcomePageUI()
+        from login_UI_options import LoginUIOptions
+        LoginUIOptions()

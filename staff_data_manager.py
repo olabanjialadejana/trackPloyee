@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 from tkinter import messagebox
-from welcome_page_UI import WelcomePageUI
+from login_UI_options import WelcomePageUI
 
 
 class RegistrationError(Exception):
