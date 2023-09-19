@@ -1,5 +1,5 @@
 from tkinter import *
-from login_UI_options import WelcomePageUI
+from login_UI_options import LoginUIOptions
 import os
 import staff_data_manager
 
@@ -143,6 +143,6 @@ class StaffRegistrationUI:
 
 	def go_back_to_welcome_page(self):
 		self.window.destroy()
-		WelcomePageUI()
+		LoginUIOptions()
 
 StaffRegistrationUI()

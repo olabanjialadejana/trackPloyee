@@ -28,7 +28,7 @@ class WelcomePageUI:
 		self.all_staff_login_button = Button(width=100, height=100, text='New Employee Registration',
 											 image=self.all_staff_img, command=self.go_to_login_ui_options)
 		self.canvas2.create_window(380, 250, window=self.all_staff_login_button)
-		self.manager_login_button = Button(width=100, height=100, text='Manager Login', image=self.manager_img)
+		self.manager_login_button = Button(width=100, height=100, text='Manager Login', image=self.manager_img, command=self.go_to_manager_login)
 		self.canvas2.create_window(550, 250, window=self.manager_login_button)
 		self.staff_login_text = self.canvas2.create_text(380, 320, text="Staff Login", font=("Arial", 10, "bold"))
 		self.manager_login_text = self.canvas2.create_text(550, 320, text="Manager Login", font=("Arial", 10, "bold"))
@@ -56,3 +56,8 @@ class WelcomePageUI:
 		self.window.destroy()
 		from login_UI_options import LoginUIOptions
 		LoginUIOptions()
+
+	def go_to_manager_login(self):
+		self.window.destroy()
+		from manager_login_UI import ManagerLoginUI
+		ManagerLoginUI()

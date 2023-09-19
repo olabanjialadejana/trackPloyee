@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 from tkinter import messagebox
-from login_UI_options import WelcomePageUI
+from login_UI_options import LoginUIOptions
 
 
 class RegistrationError(Exception):
@@ -100,4 +100,4 @@ def save_registration_data(self):
 
 		messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
 		self.window.destroy()
-		WelcomePageUI()
+		LoginUIOptions()
