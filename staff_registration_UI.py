@@ -20,7 +20,7 @@ class StaffRegistrationUI:
 		self.canvas.grid(column=0, row=0)
 		self.go_back_img = PhotoImage(file="samples/welcome-page-logos/icons8-go-back-48.png")
 		self.go_back_button = Button(width=48, height=48, text='go_back',
-									 image=self.go_back_img, command=self.go_back_to_welcome_page)
+									 image=self.go_back_img, command=self.go_back_to_manager_dashboard)
 		# Position the button at the upper left part of the canvas
 		self.canvas.create_window(10, 10, anchor="nw", window=self.go_back_button)
 		self.canvas2 = Canvas(width=900, height=450, background="#526D82")
@@ -141,8 +141,8 @@ class StaffRegistrationUI:
 
 		self.window.mainloop()
 
-	def go_back_to_welcome_page(self):
+	def go_back_to_manager_dashboard(self):
 		self.window.destroy()
-		LoginUIOptions()
+		from manager_dashboard_UI import ManagerDashboardUI
+		ManagerDashboardUI()
 
-StaffRegistrationUI()
