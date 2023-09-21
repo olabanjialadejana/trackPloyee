@@ -2,7 +2,17 @@ from tkinter import *
 from tkinter import ttk
 # from login_UI_options import WelcomePageUI this will be the link to the manager dashboard
 import json
+import os
 from tkinter import messagebox
+
+# Get the absolute path to the directory containing this script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Navigate to the image directory from the script's location
+image_dir = os.path.join(script_dir, "..", "images")
+
+os.chdir(image_dir)
+
 
 
 class StaffDashboard_UI:
@@ -17,7 +27,7 @@ class StaffDashboard_UI:
         self.canvas.create_image(490, 50, image=self.logo_img)
         self.canvas.grid(column=0, row=0)
 
-        self.go_back_img = PhotoImage(file="samples/welcome-page-logos/icons8-go-back-48.png")
+        self.go_back_img = PhotoImage(file="icons8-go-back-48.png")
         self.go_back_button = Button(width=48, height=48, text='go_back',
                                      image=self.go_back_img, command=self.go_back_to_manager_dashboard)
         # Position the button at the upper left part of the canvas
@@ -68,12 +78,12 @@ class StaffDashboard_UI:
 
     def go_back_to_manager_dashboard(self):
         self.window.destroy()
-        from manager_dashboard_UI import ManagerDashboardUI
+        from manager.manager_dashboard_UI import ManagerDashboardUI
         ManagerDashboardUI()
 
     def load_data_from_json(self):
         try:
-            with open('data.json', 'r') as json_file:
+            with open('../database/data.json', 'r') as json_file:
                 data = json.load(json_file)
                 for staff_number, values in data.items():
                     # Exclude 'address', 'next of kin', 'next of kin address', 'next of kin telephone'

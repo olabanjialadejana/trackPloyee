@@ -1,6 +1,6 @@
 # Trackployee
 
-![Trackployee](Trackployee_front.png)
+![Trackployee](images/Trackployee_front.png)
 
 ## Project Overview
 

@@ -1,6 +1,14 @@
 from tkinter import *
 import datetime
-from login_UI_options import LoginUIOptions
+import os
+
+# Get the absolute path to the directory containing this script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Navigate to the image directory from the script's location
+image_dir = os.path.join(script_dir, "..", "images")
+
+os.chdir(image_dir)
 
 
 class WelcomePageUI:
@@ -22,8 +30,8 @@ class WelcomePageUI:
 		self.date_text = self.canvas2.create_text(450, 170, text=self.initial_date, font=("Arial", 10))
 		self.time_text = self.canvas2.create_text(450, 130, text=self.initial_time, font=("Arial", 24))
 		self.canvas2.grid(column=0, row=1)
-		self.manager_img = PhotoImage(file="samples/welcome-page-logos/icons8-manager-100.png")
-		self.all_staff_img = PhotoImage(file="./samples/welcome-page-logos/all_staff_login.png")
+		self.manager_img = PhotoImage(file="icons8-manager-100.png")
+		self.all_staff_img = PhotoImage(file="all_staff_login.png")
 
 		self.all_staff_login_button = Button(width=100, height=100, text='New Employee Registration',
 											 image=self.all_staff_img, command=self.go_to_login_ui_options)
@@ -44,20 +52,20 @@ class WelcomePageUI:
 
 	def open_password_login(self):
 		self.window.destroy()
-		from login_UI import LoginUI
+		from login.login_UI import LoginUI
 		LoginUI()
 
 	def open_staff_registration(self):
 		self.window.destroy()
-		from staff_registration_UI import StaffRegistrationUI
+		from staff.staff_registration_UI import StaffRegistrationUI
 		StaffRegistrationUI()
 
 	def go_to_login_ui_options(self):
 		self.window.destroy()
-		from login_UI_options import LoginUIOptions
+		from login.login_UI_options import LoginUIOptions
 		LoginUIOptions()
 
 	def go_to_manager_login(self):
 		self.window.destroy()
-		from manager_login_UI import ManagerLoginUI
+		from manager.manager_login_UI import ManagerLoginUI
 		ManagerLoginUI()

@@ -1,7 +1,6 @@
 from tkinter import *
-from login_UI_options import LoginUIOptions
 import os
-import staff_data_manager
+from staff import staff_data_manager
 
 print("Current directory:", os.getcwd())
 
@@ -15,10 +14,10 @@ class StaffRegistrationUI:
 		self.window.geometry("900x610")
 		self.window.config(background="#27374D")
 		self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
-		self.logo_img = PhotoImage(file="logo.png")
+		self.logo_img = PhotoImage(file="../images/logo.png")
 		self.canvas.create_image(450, 70, image=self.logo_img)
 		self.canvas.grid(column=0, row=0)
-		self.go_back_img = PhotoImage(file="samples/welcome-page-logos/icons8-go-back-48.png")
+		self.go_back_img = PhotoImage(file="../images/icons8-go-back-48.png")
 		self.go_back_button = Button(width=48, height=48, text='go_back',
 									 image=self.go_back_img, command=self.go_back_to_manager_dashboard)
 		# Position the button at the upper left part of the canvas
@@ -131,7 +130,7 @@ class StaffRegistrationUI:
 		self.pay_entry.focus()
 		self.canvas2.create_window(450, 435, window=self.pay_entry)
 
-		self.submit_img = PhotoImage(file="samples/welcome-page-logos/icons8-upload-64.png")
+		self.submit_img = PhotoImage(file="../images/icons8-upload-64.png")
 		self.submit_button = Button(width=70, height=68, text='submit',
 									image=self.submit_img,
 									command=lambda: staff_data_manager.save_registration_data(self))
@@ -143,6 +142,6 @@ class StaffRegistrationUI:
 
 	def go_back_to_manager_dashboard(self):
 		self.window.destroy()
-		from manager_dashboard_UI import ManagerDashboardUI
+		from manager.manager_dashboard_UI import ManagerDashboardUI
 		ManagerDashboardUI()
 

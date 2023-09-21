@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 from tkinter import messagebox
-from login_UI_options import LoginUIOptions
+from login.login_UI_options import LoginUIOptions
 
 
 class RegistrationError(Exception):
@@ -63,7 +63,7 @@ def get_all_entry_values(self):
 def save_registration_data(self):
 	new_data = get_all_entry_values(self)
 	try:
-		with open("data.json", "r") as data_file:
+		with open("../database/data.json", "r") as data_file:
 			# Read old data
 			data = json.load(data_file)
 
@@ -79,12 +79,12 @@ def save_registration_data(self):
 
 			data.update(new_data)
 
-			with open('data.json', 'w') as file:
+			with open('../database/data.json', 'w') as file:
 				json.dump(data, file, indent=4)
 
 			messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")
 			self.window.destroy()
-			WelcomePageUI()
+
 
 	except (FileNotFoundError, json.JSONDecodeError):
 		data = {}
@@ -95,7 +95,7 @@ def save_registration_data(self):
 
 		data.update(new_data)
 
-		with open('data.json', 'w') as data_file:
+		with open('../database/data.json', 'w') as data_file:
 			json.dump(data, data_file, indent=4)
 
 		messagebox.showinfo(title="Registration successful!!", message="New staff registration successful")

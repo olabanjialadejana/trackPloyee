@@ -10,10 +10,10 @@ class LoginUI:
         self.window.geometry("900x600")
         self.window.config(background="#27374D")
         self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
-        self.logo_img = PhotoImage(file="logo.png")
+        self.logo_img = PhotoImage(file="../images/logo.png")
         self.canvas.create_image(450, 100, image=self.logo_img)
         self.canvas.grid(column=0, row=0)
-        self.go_back_img = PhotoImage(file="samples/welcome-page-logos/icons8-go-back-48.png")
+        self.go_back_img = PhotoImage(file="../images/icons8-go-back-48.png")
         self.go_back_button = Button(width=48, height=48, text='go_back',
         							 image=self.go_back_img, command=self.go_back_to_welcome_page)
         # Position the button at the upper left part of the canvas
@@ -80,5 +80,5 @@ class LoginUI:
 
     def go_back_to_welcome_page(self):
         self.window.destroy()
-        from login_UI_options import LoginUIOptions
-        LoginUIOptions()
+        from welcome_page.welcome_page_UI import WelcomePageUI
+        WelcomePageUI()
