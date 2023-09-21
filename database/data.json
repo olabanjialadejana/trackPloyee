@@ -1,0 +1,47 @@
+{
+    "2023001": {
+        "first name": "Richard",
+        "last name": "Belvin",
+        "age": "23",
+        "telephone": "090554638234",
+        "email": "richard.belvin@yahoo.com",
+        "address": "Long Beach, CA",
+        "password": "4r4ttfwrt55",
+        "next of kin": "Jessica Belvin",
+        "next of kin address": "Long Beach, CA",
+        "next of kin telephone": "090554638223",
+        "department/unit": "Finance",
+        "position": "Auditor",
+        "pay": "100000"
+    },
+    "2023002": {
+        "first name": "Hillary",
+        "last name": "Clinton",
+        "age": "45",
+        "telephone": "+443345543",
+        "email": "hilary@gmail.com",
+        "address": "Washington DC",
+        "password": "democrat",
+        "next of kin": "Bill Clinton",
+        "next of kin address": "Washington DC",
+        "next of kin telephone": "+443345532",
+        "department/unit": "DSS",
+        "position": "Secret",
+        "pay": "340000"
+    },
+    "2023003": {
+        "first name": "Crimiea",
+        "last name": "Greene",
+        "age": "45",
+        "telephone": "+535564324",
+        "email": "greene@gmail.com",
+        "address": "Flagstaff, AZ",
+        "password": "5ythrh4t4",
+        "next of kin": "Ursula Greene",
+        "next of kin address": "Flagstaff, AZ",
+        "next of kin telephone": "+45342455",
+        "department/unit": "Security",
+        "position": "CSO",
+        "pay": "245000"
+    }
+}
