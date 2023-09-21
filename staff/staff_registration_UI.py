@@ -2,8 +2,6 @@ from tkinter import *
 import os
 from staff import staff_data_manager
 
-print("Current directory:", os.getcwd())
-
 FONT_NAME = "Cambria"
 
 
