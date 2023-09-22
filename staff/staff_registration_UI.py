@@ -8,7 +8,7 @@ FONT_NAME = "Cambria"
 class StaffRegistrationUI:
 	def __init__(self):
 		self.window = Tk()
-		self.window.title("TrackPloyee")
+		self.window.title("Register New Staff")
 		self.window.geometry("900x610")
 		self.window.config(background="#27374D")
 		self.canvas = Canvas(width=900, height=150, background="#DDE6ED")

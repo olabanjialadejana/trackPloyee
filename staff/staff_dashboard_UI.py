@@ -18,7 +18,7 @@ os.chdir(image_dir)
 class StaffDashboard_UI:
     def __init__(self):
         self.window = Tk()
-        self.window.title("Admin Dashboard")
+        self.window.title("Staff Dashboard")
         self.window.geometry("983x600")
         self.window.config(background="#27374D")
 

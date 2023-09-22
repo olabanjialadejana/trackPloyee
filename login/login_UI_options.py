@@ -4,7 +4,7 @@ from tkinter import *
 class LoginUIOptions:
 	def __init__(self):
 		self.window = Tk()
-		self.window.title("TrackPloyee")
+		self.window.title("Login Options")
 		self.window.geometry("900x600")
 		self.window.config(background="#27374D")
 		self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
