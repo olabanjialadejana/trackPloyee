@@ -2,9 +2,9 @@ from tkinter import *
 
 
 class ManagerDashboardUI:
-	def __init__(self):
-		self.window = Tk()
-		self.window.title("TrackPloyee")
+	def __init__(self, window=None):
+		self.window = window if window else Tk()
+		self.window.title("Manager Dashboard")
 		self.window.geometry("900x600")
 		self.window.config(background="#27374D")
 		self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
@@ -17,7 +17,7 @@ class ManagerDashboardUI:
 
 		self.go_back_img = PhotoImage(file="../images/icons8-go-back-48.png")
 		self.go_back_button = Button(width=48, height=48, text='go_back',
-									 image=self.go_back_img, command=self.go_to_manager_login)
+									 image=self.go_back_img, command=self.go_back_to_manager_login)
 		# Position the go-back-button at the upper left part of the canvas
 		self.canvas.create_window(10, 10, anchor="nw", window=self.go_back_button)
 
@@ -54,14 +54,10 @@ class ManagerDashboardUI:
 		from staff.staff_registration_UI import StaffRegistrationUI
 		StaffRegistrationUI()
 
-	def go_to_login_ui_options(self):
-		self.window.destroy()
-		from login.login_UI_options import LoginUIOptions
-		LoginUIOptions()
 
-	def go_to_manager_login(self):
+	def go_back_to_manager_login(self):
 		self.window.destroy()
-		from manager_login_UI import ManagerLoginUI
+		from manager.manager_login_UI import ManagerLoginUI
 		ManagerLoginUI()
 
 	def go_to_staff_dashboard(self):
@@ -70,4 +66,4 @@ class ManagerDashboardUI:
 		StaffDashboard_UI()
 
 
-ManagerDashboardUI()
+

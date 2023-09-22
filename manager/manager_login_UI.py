@@ -1,12 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
 import datetime
+import json
+from manager.manager_dashboard_UI import ManagerDashboardUI
 
 
 class ManagerLoginUI:
-	def __init__(self):
-		self.window = Tk()
-		self.window.title("TrackPloyee")
+	def __init__(self, window=None):
+		self.window = window if window else Tk()
+		self.window.title("Manager Login")
 		self.window.geometry("900x600")
 		self.window.config(background="#27374D")
 		self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
@@ -41,7 +43,7 @@ class ManagerLoginUI:
 										variable=self.check_var,
 										bg="#9DB2BF",
 										command=self.toggle_showing_password)
-		self.login_button = Button(width=10, text='Login', command=self.messageOnClickLogin)
+		self.login_button = Button(width=10, text='Login', command=self.login_manager)
 
 		self.window.mainloop()
 
@@ -75,8 +77,46 @@ class ManagerLoginUI:
 
 	def go_back_to_welcome_page(self):
 		self.window.destroy()
-		from welcome_page_UI import WelcomePageUI
+		from welcome_page.welcome_page_UI import WelcomePageUI
 		WelcomePageUI()
+
+	def login_manager(self):
+		json_file_path = "../database/data.json"
+
+		try:
+			with open(json_file_path, 'r') as json_file:
+				data = json.load(json_file)
+				for record in data.items():
+					new_records = list(record)
+					record_data = new_records[1]
+					manager_details = {}
+					if record_data.get('position') == 'Manager':
+						password = record_data['password']
+						username = new_records[0]
+						manager_details['username'] = username
+						manager_details['password'] = password
+			input_details = self.get_manager_input()
+			if input_details == manager_details:
+				messagebox.showinfo(title="Success!!", message="Welcome to Manager Section!!")
+				ManagerDashboardUI(self.window)
+			else:
+				messagebox.showerror(title="Error!!", message="Wrong Username/Password!!!")
+
+		except FileNotFoundError:
+			messagebox.showerror(title="No records", message="No Manager Records Available!!!")
+
+
+	def get_manager_input(self):
+		user_input_details = {}
+		username = self.username_entry.get()
+		password = self.password_entry.get()
+		user_input_details['username'] = username
+		user_input_details['password'] = password
+		return user_input_details
+
+
+
+
 
 
 

@@ -43,5 +43,21 @@
         "department/unit": "Security",
         "position": "CSO",
         "pay": "245000"
+    },
+    "2023004": {
+        "first name": "Tinubu",
+        "last name": "Hopewell",
+        "age": "39",
+        "telephone": "+335543456",
+        "email": "tinubu@gmail.com",
+        "address": "Ridgeland, CA",
+        "password": "g43tg343tttt3",
+        "next of kin": "Richard Kingpin",
+        "next of kin address": "Forthstone, AL",
+        "next of kin telephone": "+456543456",
+        "department/unit": "Operations",
+        "position": "Manager",
+        "pay": "450000"
     }
 }
+
