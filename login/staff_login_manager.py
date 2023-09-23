@@ -19,21 +19,21 @@ def process_login_details(input_username, input_password):
 		data = json.load(json_file)
 		for record in data.items():
 			new_records = list(record)
-			# print(new_records)
 			if input_username in new_records[0]:
-				user_record = new_records
 				staff_password = new_records[1]['password']
+				print(f"staff password {staff_password}")
+				print(f"input password {input_password}")
 				if input_password == staff_password:
 					now = datetime.datetime.now()
 					current_time = now.strftime('%I:%M %p')
 					messagebox.showinfo(title="Login successful!!",
 										message=f"Login time: {current_time}\nWelcome to Work!!!!")
-
 				else:
 					messagebox.showerror(title="Login Error!!!", message="Wrong Password!!!")
-			elif input_username not in new_records[0]:
-				messagebox.showerror(title="Username Error!!!", message="Username not found!!!")
 				break
+		else:
+			messagebox.showerror(title="Username Error!!!", message="Username not found!!!")
+
 
 
 

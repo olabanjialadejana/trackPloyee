@@ -89,4 +89,5 @@ class LoginUI:
         input_password = self.password_entry.get()
         if self.username_entry.get() == '' or self.password_entry.get() == '':
             messagebox.showerror(title="Missing Details", message="No field can be left empty!!")
-        process_login_details(input_username, input_password)
+        else:
+            process_login_details(input_username, input_password)
