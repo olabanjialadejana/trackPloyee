@@ -41,7 +41,7 @@ class LoginUI:
                                         variable=self.check_var,
                                         bg="#9DB2BF",
                                         command=self.toggle_showing_password)
-        self.login_button = Button(width=10, text='Login', command=self.login)
+        self.login_button = Button(width=10, text='Login/Logout', command=self.login)
         self.update_time()
         self.window.mainloop()
 

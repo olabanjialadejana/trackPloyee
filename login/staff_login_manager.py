@@ -1,5 +1,6 @@
 import json
 from tkinter import messagebox
+import datetime
 
 
 class RegistrationError(Exception):
@@ -23,7 +24,17 @@ def process_login_details(input_username, input_password):
 				user_record = new_records
 				staff_password = new_records[1]['password']
 				if input_password == staff_password:
-					messagebox.showinfo(title="Success", message="Welcome to Work!!")
+					now = datetime.datetime.now()
+					current_time = now.strftime('%I:%M %p')
+					messagebox.showinfo(title="Login successful!!",
+										message=f"Login time: {current_time}\nWelcome to Work!!!!")
+
+				else:
+					messagebox.showerror(title="Login Error!!!", message="Wrong Password!!!")
+			elif input_username not in new_records[0]:
+				messagebox.showerror(title="Username Error!!!", message="Username not found!!!")
+				break
+
 
 
 	# except FileNotFoundError:
