@@ -31,20 +31,24 @@ def process_login_details(input_username, input_password):
 
 					try:
 						with open(file_path, 'r') as file:
-							existing_data = json.load(file)
+							try:
+								existing_data = json.load(file)
+							except json.JSONDecodeError:
+								existing_data = {}
 					except FileNotFoundError:
-						existing_data = []
+						existing_data = {}
 					# Create login record
 					record = {}
 
 					staff_number = input_username
-					login_time = datetime.datetime.now()
+					login_date = now.date()
+					login_time = now.time()
 					record["Staff Number"] = staff_number
+					record["Login Date"] = login_date
 					record["Login Time"] = login_time
 
-					existing_data.append(record)
+					existing_data[staff_number] = record
 
-					print(record)
 
 					with open(file_path, 'w') as file:
 						json.dump(existing_data, file, default=str, indent=4)
