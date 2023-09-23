@@ -1,12 +1,13 @@
 from tkinter import *
 from tkinter import messagebox
 import datetime
+from login.staff_login_manager import process_login_details
 
 
 class LoginUI:
     def __init__(self):
         self.window = Tk()
-        self.window.title("TrackPloyee")
+        self.window.title("Staff Login Page")
         self.window.geometry("900x600")
         self.window.config(background="#27374D")
         self.canvas = Canvas(width=900, height=150, background="#DDE6ED")
@@ -40,7 +41,7 @@ class LoginUI:
                                         variable=self.check_var,
                                         bg="#9DB2BF",
                                         command=self.toggle_showing_password)
-        self.login_button = Button(width=10, text='Login', command=self.messageOnClickLogin)
+        self.login_button = Button(width=10, text='Login', command=self.login)
         self.update_time()
         self.window.mainloop()
 
@@ -82,3 +83,10 @@ class LoginUI:
         self.window.destroy()
         from welcome_page.welcome_page_UI import WelcomePageUI
         WelcomePageUI()
+
+    def login(self):
+        input_username = self.username_entry.get()
+        input_password = self.password_entry.get()
+        if self.username_entry.get() == '' or self.password_entry.get() == '':
+            messagebox.showerror(title="Missing Details", message="No field can be left empty!!")
+        process_login_details(input_username, input_password)
