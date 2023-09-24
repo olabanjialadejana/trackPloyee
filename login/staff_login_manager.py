@@ -13,8 +13,8 @@ def process_login_details(input_username, input_password):
                 if input_password == staff_password:
                     now = datetime.datetime.now()
                     current_time = now.strftime('%I:%M %p')
-                    messagebox.showinfo(title="Login successful!!",
-                                        message=f"Login time: {current_time}\nWelcome to Work!!!!")
+                    # messagebox.showinfo(title="Login successful!!",
+                    #                     message=f"Login time: {current_time}\nWelcome to Work!!!!")
 
                     file_path = "../database/staff_attendance_record.json"
 
@@ -36,14 +36,19 @@ def process_login_details(input_username, input_password):
                             "Login Time": now.strftime('%H:%M:%S'),  # Include seconds without microseconds
                         }
                         existing_data[input_username] = user_record
+                        messagebox.showinfo(title="Login successful!!",
+                                            message=f"Login time: {user_record['Login Time']}\nWelcome to Work!!!!")
                     else:
                         # If a record already exists, update the "Logout Time" and calculate the "Duration"
                         user_record["Logout Time"] = now.strftime('%H:%M:%S')  # Include seconds without microseconds
                         login_time = datetime.datetime.strptime(user_record["Login Time"], '%H:%M:%S')
                         logout_time = datetime.datetime.strptime(user_record["Logout Time"], '%H:%M:%S')
+                        logout_time_output = logout_time.strftime('%H:%M:%S')
                         time_difference = logout_time - login_time
                         duration_in_seconds = time_difference.total_seconds()
                         user_record["Duration"] = duration_in_seconds
+                        messagebox.showinfo(title="Logout successful!!",
+                                            message=f"Logout time: {logout_time_output}\nHave a nice day!!!!")
 
                     with open(file_path, 'w') as file:
                         json.dump(existing_data, file, default=str, indent=4)

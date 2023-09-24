@@ -58,6 +58,20 @@
         "department/unit": "Operations",
         "position": "Manager",
         "pay": "450000"
+    },
+    "2023005": {
+        "first name": "Taylor",
+        "last name": "Smith",
+        "age": "45",
+        "telephone": "+5646382923",
+        "email": "taylorsmith@gmail.com",
+        "address": "York, New England",
+        "password": "deufe*efefe",
+        "next of kin": "Margerie Green",
+        "next of kin address": "York, New England",
+        "next of kin telephone": "+5646382956",
+        "department/unit": "Accounts",
+        "position": "Senior Auditor",
+        "pay": "478000"
     }
 }
-
