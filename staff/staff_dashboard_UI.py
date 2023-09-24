@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import ttk
-# from login_UI_options import WelcomePageUI this will be the link to the manager dashboard
 import json
 import os
 from tkinter import messagebox
@@ -107,4 +106,4 @@ class StaffDashboard_UI:
             messagebox.showerror(title="Database Error!!!", message="No user database yet!!!")
 
 
-StaffDashboard_UI()
+

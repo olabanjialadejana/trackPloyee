@@ -40,7 +40,7 @@ def process_login_details(input_username, input_password):
                                             message=f"Login time: {user_record['Login Time']}\nWelcome to Work!!!!")
                     else:
                         # If a record already exists, update the "Logout Time" and calculate the "Duration"
-                        user_record["Logout Time"] = now.strftime('%H:%M:%S')  # Include seconds without microseconds
+                        user_record["Logout Time"] = now.strftime('%H:%M:%S')
                         login_time = datetime.datetime.strptime(user_record["Login Time"], '%H:%M:%S')
                         logout_time = datetime.datetime.strptime(user_record["Logout Time"], '%H:%M:%S')
                         logout_time_output = logout_time.strftime('%H:%M:%S')

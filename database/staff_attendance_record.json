@@ -3,10 +3,12 @@
         "Login Date": "2023-09-24",
         "Login Time": "11:27:22",
         "Logout Time": "11:28:21",
-        "Duration": 0.01638888888888889
+        "Duration": 0.01
     },
     "20230016": {
         "Login Date": "2023-09-24",
-        "Login Time": "11:27:57"
+        "Login Time": "11:27:57",
+        "Logout Time": "12:14:24",
+        "Duration": 0.77
     }
 }
