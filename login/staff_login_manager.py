@@ -32,7 +32,6 @@ def process_login_details(input_username, input_password):
                     if user_record is None or user_record.get("Login Date") != now.date().isoformat():
                         # If no record or record not for today, create a new one
                         user_record = {
-                            "Staff Number": input_username,
                             "Login Date": now.date().isoformat(),
                             "Login Time": now.strftime('%H:%M:%S'),  # Include seconds without microseconds
                         }

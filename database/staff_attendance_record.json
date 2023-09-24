@@ -1,16 +1,8 @@
 {
-    "2023001": {
-        "Staff Number": "2023001",
-        "Login Date": "2023-09-24",
-        "Login Time": "08:42:37",
-        "Logout Time": "08:45:16",
-        "Duration": 159.0
-    },
     "2023002": {
-        "Staff Number": "2023002",
         "Login Date": "2023-09-24",
-        "Login Time": "08:46:03",
-        "Logout Time": "08:49:15",
-        "Duration": 192.0
+        "Login Time": "08:58:15",
+        "Logout Time": "09:00:44",
+        "Duration": 149.0
     }
 }
