@@ -1,32 +1,12 @@
 {
-    "2023002": {
-        "Login Date": "2023-09-24",
-        "Login Time": "08:58:15",
-        "Logout Time": "09:00:44",
-        "Duration": 149.0
-    },
-    "2023004": {
-        "Login Date": "2023-09-24",
-        "Login Time": "09:02:51",
-        "Logout Time": "09:41:38",
-        "Duration": 2327.0
-    },
-    "2023003": {
-        "Login Date": "2023-09-24",
-        "Login Time": "09:37:11",
-        "Logout Time": "09:39:43",
-        "Duration": 152.0
-    },
     "2023001": {
         "Login Date": "2023-09-24",
-        "Login Time": "09:42:30",
-        "Logout Time": "09:43:59",
-        "Duration": 89.0
+        "Login Time": "11:27:22",
+        "Logout Time": "11:28:21",
+        "Duration": 0.01638888888888889
     },
-    "2023005": {
+    "20230016": {
         "Login Date": "2023-09-24",
-        "Login Time": "09:49:03",
-        "Logout Time": "09:54:47",
-        "Duration": 344.0
+        "Login Time": "11:27:57"
     }
 }

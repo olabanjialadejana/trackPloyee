@@ -35,7 +35,10 @@ class StaffDashboard_UI:
 
         self.canvas2 = Canvas(width=980, height=500, background="#526D82")
         self.canvas2.create_rectangle(8, 500, 980, 8, fill="#9DB2BF")
+        self.theme_text = self.canvas2.create_text(470, 30, text="List of All Staff", font=("Arial", 17, "bold"))
         self.canvas2.grid(column=0, row=1)
+
+
 
         # Create a custom style for column headers
         bold_font = ('TkDefaultFont', 10, 'bold')  # Change the font size and style as needed
@@ -70,7 +73,13 @@ class StaffDashboard_UI:
         self.table.column('position', width=100)
         self.table.column('pay', width=95)
 
-        self.canvas2.create_window(10, 20, anchor="nw", window=self.table)  # Adjust the coordinates as needed
+        # Increase the width and height of the table
+        table_width = 970  # Adjust the width as needed
+        table_height = 400  # Adjust the height as needed
+
+        self.canvas2.create_window(10, 50, anchor="nw", width=table_width, height=table_height, window=self.table)
+
+        # self.canvas2.create_window(10, 20, anchor="nw", window=self.table)  # Adjust the coordinates as needed
 
         self.load_data_from_json()
 
@@ -98,4 +107,4 @@ class StaffDashboard_UI:
             messagebox.showerror(title="Database Error!!!", message="No user database yet!!!")
 
 
-
+StaffDashboard_UI()

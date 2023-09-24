@@ -48,7 +48,7 @@ def process_login_details(input_username, input_password):
                         duration_in_seconds = time_difference.total_seconds()
 
                         # Convert duration to hours
-                        duration_in_hours = duration_in_seconds / 3600.0
+                        duration_in_hours = round(duration_in_seconds / 3600.0, 2)
                         user_record["Duration"] = duration_in_hours
                         messagebox.showinfo(title="Logout successful!!",
                                             message=f"Logout time: {logout_time_output}\nHave a nice day!!!!")

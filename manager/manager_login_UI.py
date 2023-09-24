@@ -81,29 +81,30 @@ class ManagerLoginUI:
 		WelcomePageUI()
 
 	def login_manager(self):
+		"""
 		json_file_path = "../database/data.json"
-
-		try:
-			with open(json_file_path, 'r') as json_file:
-				data = json.load(json_file)
-				for record in data.items():
-					new_records = list(record)
-					record_data = new_records[1]
-					manager_details = {}
-					if record_data.get('position') == 'Manager':
-						password = record_data['password']
-						username = new_records[0]
-						manager_details['username'] = username
-						manager_details['password'] = password
-			input_details = self.get_manager_input()
-			if input_details == manager_details:
-				messagebox.showinfo(title="Success!!", message="Welcome to Manager Section!!")
-				ManagerDashboardUI(self.window)
-			else:
-				messagebox.showerror(title="Error!!", message="Wrong Username/Password!!!")
-
-		except FileNotFoundError:
-			messagebox.showerror(title="No records", message="No Manager Records Available!!!")
+		To be revisited:
+		# try:
+		# 	with open(json_file_path, 'r') as json_file:
+		# 		data = json.load(json_file)
+		# 		for record in data.items():
+		# 			new_records = list(record)
+		# 			record_data = new_records[1]
+		# 			manager_details = {}
+		# 			if record_data.get('position') == 'Manager':
+		# 				password = record_data['password']
+		# 				username = new_records[0]
+		# 				manager_details['username'] = username
+		# 				manager_details['password'] = password
+		# 	input_details = self.get_manager_input()
+		"""
+		username = self.username_entry.get()
+		password = self.password_entry.get()
+		if username == 'admin' and password == 'master':
+			messagebox.showinfo(title="Success!!", message="Welcome to Manager Section!!")
+			ManagerDashboardUI(self.window)
+		else:
+			messagebox.showerror(title="Error!!", message="Wrong Username/Password!!!")
 
 
 	def get_manager_input(self):
