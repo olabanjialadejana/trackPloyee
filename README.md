@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Trackployee is a comprehensive desktop software solution designed to assist companies in efficiently managing their employee work schedules, attendance tracking, and payroll generation.
+Trackployee is a desktop software solution designed to assist companies in efficiently managing their employee work schedules, attendance tracking, and payroll generation.
 
 ## Key Features
 
